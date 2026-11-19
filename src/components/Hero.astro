@@ -4,18 +4,18 @@ import { siteConfig } from "../config";
 
 <div
   id="hero"
-  class="relative isolate overflow-hidden bg-white py-24 md:h-screen"
+  class="relative isolate overflow-hidden py-24 md:h-screen"
   style={`--accent-color: ${siteConfig.accentColor}`}
 >
   <!-- Gradient overlay -->
   <div
     class="absolute inset-0 -z-10"
-    style={`background: radial-gradient(ellipse 800px 1200px at 0% 0%, ${siteConfig.accentColor}40 0%, ${siteConfig.accentColor}25 20%, ${siteConfig.accentColor}10 40%, rgba(255, 255, 255, 0.3) 70%, rgba(255, 255, 255, 0.8) 90%, white 100%)`}
+    style={`background: radial-gradient(ellipse 800px 1200px at 0% 0%, ${siteConfig.accentColor}40 0%, ${siteConfig.accentColor}25 20%, ${siteConfig.accentColor}10 40%, rgba(234, 241, 247, 0.3) 70%, rgba(234, 241, 247, 0.8) 90%, #eaf1f7 100%)`}
   >
   </div>
   <svg
     aria-hidden="true"
-    class="absolute inset-0 -z-10 size-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+    class="absolute inset-0 -z-10 size-full stroke-[#d3deea] [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
   >
     <defs>
       <pattern
@@ -129,15 +129,30 @@ import { siteConfig } from "../config";
       height="100%"
       stroke-width={0}></rect>
   </svg>
-  <div class="h-full mx-auto p-8 sm:p-12 md:p-24 flex items-center">
+  <div class="h-full max-w-5xl mx-auto p-8 sm:p-12 md:p-16 flex flex-col md:flex-row items-center justify-center md:justify-start gap-10 md:gap-16 lg:gap-24">
+    <!-- Profile photo: set `photo` in src/config.ts (e.g. "/me.jpg" with the file in /public) -->
+    <div
+      class="photo-frame shrink-0 size-40 sm:size-52 md:size-72 lg:size-80 rounded-full overflow-hidden border-4 border-white shadow-xl animate-fade-in animation-delay-400"
+      style={`--accent-color: ${siteConfig.accentColor}`}
+    >
+      {
+        siteConfig.photo ? (
+          <img src={siteConfig.photo} alt={siteConfig.name} class="size-full object-cover" />
+        ) : (
+          <div class="size-full flex items-center justify-center bg-[#dae5ef] text-[#7a8794] text-sm text-center px-4">
+            your photo here 📸
+          </div>
+        )
+      }
+    </div>
     <div>
       <h2
         class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 animate-fade-in"
       >
-        Hello! 👋
+        Hello!
       </h2>
       <h1
-        class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200"
+        class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200"
       >
         I'm <span style={{ color: siteConfig.accentColor }}
           >{siteConfig.name}</span
@@ -148,10 +163,19 @@ import { siteConfig } from "../config";
       >
         {siteConfig.title}
       </p>
+      {
+        siteConfig.notes && siteConfig.notes.length > 0 && (
+          <div class="mt-6 sm:mt-8 max-w-2xl space-y-3 animate-fade-in animation-delay-600">
+            {siteConfig.notes.map((note) => (
+              <p class="text-xs sm:text-sm leading-relaxed text-gray-600">{note}</p>
+            ))}
+          </div>
+        )
+      }
     </div>
   </div>
   <div
-    class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 animate-fade-in animation-delay-600"
+    class="absolute bottom-0 left-0 right-0 max-w-5xl mx-auto p-8 sm:p-12 md:p-16 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 animate-fade-in animation-delay-600"
   >
     {
       siteConfig.social?.email && (
@@ -275,6 +299,13 @@ import { siteConfig } from "../config";
 </div>
 
 <style>
+  .photo-frame {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .photo-frame:hover {
+    transform: rotate(-4deg) scale(1.05);
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;

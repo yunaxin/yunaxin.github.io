@@ -1,5 +1,172 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
 body {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  background-color: #eaf1f7;
+}
+
+body {
+  background-color: transparent;
+}
+
+/* Interactive cards (Projects / Experience / Education) */
+.card-fx {
+  position: relative;
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+.card-fx::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: var(--accent-color);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+.card-fx:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--accent-color) 55%, transparent);
+  background-color: color-mix(in srgb, var(--accent-color) 6%, white);
+  box-shadow: 0 14px 30px -10px color-mix(in srgb, var(--accent-color) 35%, transparent);
+}
+.card-fx:hover::before {
+  transform: scaleY(1);
+}
+.card-fx:active {
+  transform: translateY(-1px) scale(0.99);
+  box-shadow: 0 6px 14px -8px color-mix(in srgb, var(--accent-color) 45%, transparent);
+}
+.card-fx:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+/* Navigation bar links */
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  color: #44403c;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.2rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent-color, #be4a6d);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+.nav-link:hover {
+  color: var(--accent-color, #be4a6d);
+  background-color: color-mix(in srgb, var(--accent-color, #be4a6d) 12%, transparent);
+  transform: translateY(-2px);
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+.nav-link.active {
+  color: var(--accent-color, #be4a6d);
+  background-color: color-mix(in srgb, var(--accent-color, #be4a6d) 18%, transparent);
+}
+.nav-link:active {
+  transform: scale(0.94);
+}
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent-color, #be4a6d);
+  outline-offset: 2px;
+}
+
+/* Project filter buttons */
+.filter-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--accent-color) 40%, transparent);
+  color: var(--accent-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+  background: transparent;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.filter-btn:hover {
+  background-color: color-mix(in srgb, var(--accent-color) 12%, transparent);
+  transform: translateY(-2px);
+}
+.filter-btn:active {
+  transform: scale(0.94);
+}
+.filter-btn.active {
+  background-color: var(--accent-color);
+  color: white;
+}
+.project-item[hidden] {
+  display: none;
+}
+
+/* Project demo / repo buttons */
+.link-btn {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.link-btn:hover {
+  transform: translateY(-2px);
+  background-color: color-mix(in srgb, var(--accent-color) 14%, transparent);
+}
+.link-btn:active {
+  transform: scale(0.95);
+}
+.link-btn-solid {
+  background-color: var(--accent-color);
+  color: white;
+}
+.link-btn-solid:hover {
+  background-color: var(--accent-color);
+  filter: brightness(1.1);
+}
+
+/* Icon-only link buttons */
+.link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
 }

@@ -2,12 +2,12 @@
 import { siteConfig } from "../config";
 ---
 
-<section id="about" class="p-8 sm:p-12 md:p-16 lg:p-24">
+<section id="about" class="max-w-5xl mx-auto p-8 sm:p-12 lg:p-16">
   <div>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
       <div class="lg:col-span-4">
         <h2
-          class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
+          class="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-gray-900"
         >
           About Me
         </h2>
@@ -19,9 +19,17 @@ import { siteConfig } from "../config";
       </div>
 
       <div class="lg:col-span-8 space-y-8">
-        <p class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600">
-          {siteConfig.aboutMe}
-        </p>
+        <div class="space-y-7 max-w-2xl">
+          {
+            siteConfig.aboutMe
+              .split(/\n\s*\n/)
+              .map((para: string) => (
+                <p class="text-sm sm:text-base md:text-lg leading-8 text-gray-600">
+                  {para.trim()}
+                </p>
+              ))
+          }
+        </div>
 
         <div class="pt-4">
           <div class="flex flex-wrap gap-3">

@@ -1,0 +1,121 @@
+---
+import { siteConfig } from "../config";
+---
+
+<div id="cursor-cake" aria-hidden="true" style={`--c: ${siteConfig.accentColor}`}></div>
+
+<style is:global>
+  #cursor-cake {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 28px;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s;
+    will-change: transform;
+  }
+  #cursor-cake span {
+    display: inline-block;
+    transform: var(--offset);
+    transition: transform 0.2s;
+  }
+  #cursor-cake.hover span {
+    transform: var(--offset) scale(1.15);
+  }
+  #cursor-cake.down span {
+    transform: var(--offset) scale(0.95);
+  }
+  .cursor-sprinkle {
+    position: fixed;
+    width: 4px;
+    height: 9px;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 9998;
+  }
+  .cursor-sprinkle.dot {
+    width: 5px;
+    height: 5px;
+    margin: -2px 0 0 -2px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    body.custom-cursor,
+    body.custom-cursor a,
+    body.custom-cursor button {
+      cursor: none;
+    }
+  }
+</style>
+
+<script>
+  const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cake = document.getElementById("cursor-cake")!;
+
+  if (fine && !reduce) {
+    document.body.classList.add("custom-cursor");
+    // Change this to "cookie" to switch cursors
+    const CURSOR: "brush" | "cookie" = "brush";
+    const presets = {
+      brush: {
+        emoji: `<svg width="44" height="34" viewBox="0 0 44 34" fill="none" style="display:block;overflow:visible"><g transform="rotate(45 16 30)"><path d="M12 14 L13 3 Q16 0.5 19 3 L20 14 Z" fill="var(--c)"/><rect x="10.5" y="14" width="11" height="5" rx="1" fill="#d9cfbf" stroke="#a89c88" stroke-width="0.8"/><path d="M11 19 L21 19 C21 23 19.5 26 16 30 C12.5 26 11 23 11 19Z" fill="#f3e3c3" stroke="#a89c88" stroke-width="0.8"/><path d="M12.6 25 C13.5 26.5 14.5 28 16 30 C17.5 28 18.5 26.5 19.4 25 C17.5 26 14.5 26 12.6 25Z" fill="var(--c)"/></g></svg>`,
+        // the brush tip sits at (16, 30) inside the SVG
+        offset: "translate(-16px, -30px)",
+        colors: ["#be4a6d", "#e08aa3", "#f0b6c6", "#d46a8a", "#c9a0a8"],
+        shape: "dot",
+      },
+      cookie: {
+        emoji: "🍪",
+        offset: "translate(-6px, -4px)",
+        colors: ["#8b5a2b", "#a9743a", "#6f4518", "#c58b4f"],
+        shape: "crumb",
+      },
+    };
+    const preset = presets[CURSOR];
+    cake.innerHTML = `<span>${preset.emoji}</span>`;
+    (cake.firstElementChild as HTMLElement).style.transformOrigin = CURSOR === "brush" ? "16px 30px" : "center";
+    cake.style.setProperty("--offset", preset.offset);
+    const colors = preset.colors;
+    let last = 0;
+
+    window.addEventListener("mousemove", (e) => {
+      cake.style.opacity = "1";
+      cake.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+
+      // sprinkle trail
+      const now = performance.now();
+      if (now - last > 110) {
+        last = now;
+        const s = document.createElement("div");
+        s.className = "cursor-sprinkle " + preset.shape;
+        s.style.background = colors[Math.floor(Math.random() * colors.length)];
+        s.style.left = e.clientX + "px";
+        s.style.top = e.clientY + "px";
+        document.body.appendChild(s);
+        const rot = Math.random() * 180;
+        if (preset.shape === "dot") {
+          // paint splat: stays put and fades
+          s.animate([{ opacity: 0.3, transform: "scale(1)" }, { opacity: 0, transform: "scale(0.5)" }], { duration: 600, easing: "ease-out" }).onfinish = () => s.remove();
+          return;
+        }
+        s.animate(
+          [
+            { transform: `translate(0,0) rotate(${rot}deg)`, opacity: 1 },
+            { transform: `translate(${(Math.random() - 0.5) * 30}px, ${15 + Math.random() * 25}px) rotate(${rot + 120}deg)`, opacity: 0 },
+          ],
+          { duration: 800, easing: "ease-in" }
+        ).onfinish = () => s.remove();
+      }
+    });
+
+    document.addEventListener("mouseleave", () => (cake.style.opacity = "0"));
+    window.addEventListener("mousedown", () => cake.classList.add("down"));
+    window.addEventListener("mouseup", () => cake.classList.remove("down"));
+    document.addEventListener("mouseover", (e) => {
+      cake.classList.toggle("hover", !!(e.target as HTMLElement).closest("a, button"));
+    });
+  }
+</script>
