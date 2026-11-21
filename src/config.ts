@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Portfolio of Amelia Oo, a data science student at UC San Diego focused on machine learning and data analysis",
   accentColor: "#be4a6d",
-  photo: "", // e.g. "/me.jpg" (put the file in /public)
+  photo: "/my_pic.jpg", // file lives in /public
   social: {
     email: "aoo@ucsd.edu",
     linkedin: "https://www.linkedin.com/in/nann-su-mon-oo",
@@ -297,7 +297,7 @@ I’m looking for Summer 2027 internships in data analytics, data science or app
       school: "De Anza College",
       degree: "Associate in Science in Mathematics for Transfer",
       honors: "Magna Cum Laude",
-      dateRange: "Sep 2023 - Jun 2026",
+      dateRange: "Sep 2023 - Jun 2025",
       achievements: ["Dean's List, 2023–2025"],
     },
   ],
