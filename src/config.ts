@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Portfolio of Amelia Oo, a data science student at UC San Diego focused on machine learning and data analysis",
   accentColor: "#be4a6d",
-  photo: "/my_pic.jpg", // file lives in /public
+  photo: "/my_photo.jpg", // file lives in /public
   social: {
     email: "aoo@ucsd.edu",
     linkedin: "https://www.linkedin.com/in/nann-su-mon-oo",
