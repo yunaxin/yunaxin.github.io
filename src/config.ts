@@ -12,11 +12,11 @@ export const siteConfig = {
     twitter: "", // optional, leave empty to hide
   },
   // Separate paragraphs with a blank line
-  aboutMe: `I like using data to figure out what’s really going on and what we can do about it. Recently, I’ve been digging more into machine learning and AI agents, and I’ve also been exploring AI ethics: how these systems affect society, and how to build them responsibly.
+  aboutMe: `I like using data to figure out what’s really going on and what we can do about it. Recently, I’ve been getting more into machine learning and AI agents, while also becoming interested in the ethical side of AI and how these technologies affect society.
 
-Outside of school, I love exploring California, trying new food spots and catching sunsets. I’m also into fashion and styling, and I’m always up for a good K-drama recommendation.
+Outside of school, I love traveling, trying new food spots, and catching sunsets. I’m also into fashion and styling, and I’m always up for a good K-drama recommendation.
 
-I’m looking for Summer 2027 internships in data analytics, data science or applied AI/ML. Feel free to reach out!`,
+I’m actively looking for Summer 2027 internships in data analytics, data science, or applied AI/ML. Feel free to reach out!`,
   skills: [
     "Python",
     "SQL",
@@ -38,9 +38,9 @@ I’m looking for Summer 2027 internships in data analytics, data science or app
   ],
   // Short intro paragraphs shown under the hero title on the home page
   notes: [
-    "I like using data to figure out what’s really going on and what we can do about it. Recently, I’ve been digging more into machine learning and AI agents, and I’ve also been exploring AI ethics: how these systems affect society, and how to build them responsibly.",
-    "Outside of school, I love exploring California, trying new food spots and catching sunsets. I’m also into fashion and styling, and I’m always up for a good K-drama recommendation.",
-    "I’m looking for Summer 2027 internships in data analytics, data science or applied AI/ML. Feel free to reach out!",
+    "I like using data to figure out what’s really going on and what we can do about it. Recently, I’ve been getting more into machine learning and AI agents, while also becoming interested in the ethical side of AI and how these technologies affect society.",
+    "Outside of school, I love traveling, trying new food spots, and catching sunsets. I’m also into fashion and styling, and I’m always up for a good K-drama recommendation.",
+    "I’m actively looking for Summer 2027 internships in data analytics, data science, or applied AI/ML. Feel free to reach out!",
   ],
   // fields: "Machine Learning" | "Statistics" | "Data Visualization" | "Hackathons" (a project can have several)
   // type: "Coursework" | "Student Org" | "Client Project" | "Hackathon"  (shown first in the card label)
@@ -170,9 +170,12 @@ I’m looking for Summer 2027 internships in data analytics, data science or app
       title: "Undergraduate Researcher",
       location: "San Diego, CA",
       dateRange: "Oct 2026 - Present",
+      summary:
+        "Currently working on a research project to support San Diego Rescue Mission’s Mission Academy by studying student withdrawal and potential early-warning signals.",
       bullets: [
-        "Scoping survival analyses of de-identified San Diego Rescue Mission program records",
-        "Looking for early-warning signals of student withdrawal and possible intervention windows",
+        "Reviewing literature on student retention and survival analysis to help shape the study.",
+        "Scoping an analysis of program records to investigate when students withdraw and what signals may be associated with withdrawal.",
+        "Exploring how the research could inform a future dashboard for staff to review student information and prioritize check-ins.",
       ],
     },
     {
@@ -182,12 +185,12 @@ I’m looking for Summer 2027 internships in data analytics, data science or app
       location: "Remote",
       dateRange: "Jun 2026 - Oct 2026",
       summary:
-        "I worked on a prototype that checks immunization records against California and Washington school-entry requirements and explains when follow-up is needed.",
+        "Developed an AI agent prototype that checks immunization records against California and Washington school-entry requirements and explains when follow-up is needed.",
       bullets: [
-        "Developed the prototype with Gemini and Google ADK and tested it locally through a FastAPI endpoint.",
-        "Encoded state requirements in JSON and wrote Python tools to check age at vaccination, intervals between doses, and exceptions. The agent uses those results to explain which requirements are met and when the next dose is due.",
-        "Tested free-text immunization histories to check that the prototype could standardize dose dates and return follow-up dates when applicable.",
-        "Evaluated 36 edge cases and ran regression checks on 113 synthetic records against both states’ rules.",
+        "Implemented the agent using Gemini and Google ADK, with a local FastAPI endpoint for normalizing and validating incoming records.",
+        "Encoded California and Washington school-entry requirements as JSON rules, with Python tools that check vaccination ages, dose intervals, and dose-reduction exceptions, allowing the agent to explain which requirements were met and when follow-up was due.",
+        "Benchmarked Gemini and Llama 4 separately on the same 500 California immunization checks across 50 synthetic records, achieving 99.4% and 99.0% agreement with rule-based reference results, respectively.",
+        "Evaluated the rules on 36 edge cases, ran regression checks on 113 synthetic records across both states, and tested the agent with a free-text immunization history.",
       ],
     },
     {
@@ -197,12 +200,12 @@ I’m looking for Summer 2027 internships in data analytics, data science or app
       location: "Remote",
       dateRange: "Jun 2026 - Sep 2026",
       summary:
-        "I built a home price predictor using California MLS data and looked at how its estimates varied by location and price range.",
+        "Developed a home price predictor using California MLS data, examining how prediction errors varied by price range and how location features affected accuracy.",
       bullets: [
-        "Built a Python pipeline that filtered about 640K MLS records to 311K single-family home sales. Used training data to set outlier cutoffs and fill missing values before testing on a later month.",
-        "Compared five regression models on a held-out month of nearly 12K sales. Tuned XGBoost achieved an R² of 0.817 and an 11.9% median absolute percentage error.",
-        "Tested how city and county features affected model performance and analyzed prediction errors across five price tiers.",
-        "Built and deployed a Streamlit app that estimates sale prices from seven inputs, including location and property details.",
+        "Built a Python pipeline to filter approximately 640K MLS records into 311K single-family home sales, using only training data to determine outlier cutoffs and missing-value imputation.",
+        "Compared five regression models (Linear Regression, Decision Tree, Random Forest, XGBoost, LightGBM) on a held-out month of nearly 12K sales; tuned XGBoost performed best, with an R² of 0.817 and an 11.9% median error versus 22.9% for linear regression.",
+        "Improved linear regression R² from 0.42 to 0.61 by incorporating location features and analyzed prediction errors across five price tiers.",
+        "Deployed a Streamlit app that estimates sale prices from seven location and property inputs, powered by a separate gradient boosting model that achieved an R² of 0.826 on the same held-out month.",
       ],
       links: [
         { label: "Streamlit app", url: "https://idx-home-price-predictor.streamlit.app" },
@@ -215,12 +218,12 @@ I’m looking for Summer 2027 internships in data analytics, data science or app
       location: "Remote",
       dateRange: "Mar 2026 - Jun 2026",
       summary:
-        "I worked with monthly California MLS data to track housing market trends and compare sales activity across agents, offices, and ZIP codes.",
+        "Used monthly California MLS data to track housing market trends and compare activity across agents, offices, and ZIP codes.",
       bullets: [
-        "Automated the process of combining monthly MLS files into a dataset of 386K residential sales and checked for missing files and inconsistent records.",
-        "Flagged invalid prices, dates, and coordinates, and used the interquartile range to identify outliers for review.",
-        "Calculated metrics such as price per square foot and sale-to-list price ratio, and added monthly mortgage rates from FRED.",
-        "Built two interactive Tableau dashboards covering market trends, including median sale price and days on market, and comparisons by agent, office, and ZIP code.",
+        "Automated the aggregation of monthly MLS files into a dataset of 386K residential sales, with checks for missing files and inconsistent records.",
+        "Flagged invalid prices, dates, and coordinates and used the interquartile range to identify outliers for review.",
+        "Calculated price per square foot and the sale-to-original-list price ratio and added monthly mortgage rates from FRED.",
+        "Built two interactive Tableau dashboards to track median sale price and days on market and compare activity across agents, offices, and ZIP codes.",
       ],
       links: [
         { label: "Market dashboard", url: "https://public.tableau.com/app/profile/amelia.oo/viz/IDXMarketAnalysisDashboard/Story1" },
