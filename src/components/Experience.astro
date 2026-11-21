@@ -76,6 +76,12 @@ const groups = categories
                       </span>
                     </div>
 
+                    {exp.summary && (
+                      <p class="mb-3 text-sm sm:text-base text-gray-700">
+                        {exp.summary}
+                      </p>
+                    )}
+
                     <ul class="space-y-2">
                       {exp.bullets.map((bullet) => (
                         <li class="flex items-start">
@@ -86,6 +92,21 @@ const groups = categories
                         </li>
                       ))}
                     </ul>
+
+                    {exp.links && exp.links.length > 0 && (
+                      <div class="mt-5 flex flex-wrap gap-2">
+                        {exp.links.map((link: any, i: number) => (
+                          <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class={i === 0 ? "link-btn link-btn-solid" : "link-btn"}
+                          >
+                            {link.label} ↗
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}

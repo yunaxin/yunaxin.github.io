@@ -181,22 +181,50 @@ I’m looking for Summer 2027 internships in data analytics, data science or app
       title: "AI/ML Intern",
       location: "Remote",
       dateRange: "Jun 2026 - Oct 2026",
+      summary:
+        "I worked on a prototype that checks immunization records against California and Washington school-entry requirements and explains when follow-up is needed.",
       bullets: [
-        "Built a Gemini-powered Google ADK agent that checks immunization records for school-entry compliance, served through FastAPI",
-        "Designed configurable JSON rules for California and Washington school-entry requirements",
-        "Benchmarked Gemini and Llama 4 on 500 synthetic records (99.4% and 99.0% accuracy)",
+        "Developed the prototype with Gemini and Google ADK and tested it locally through a FastAPI endpoint.",
+        "Encoded state requirements in JSON and wrote Python tools to check age at vaccination, intervals between doses, and exceptions. The agent uses those results to explain which requirements are met and when the next dose is due.",
+        "Tested free-text immunization histories to check that the prototype could standardize dose dates and return follow-up dates when applicable.",
+        "Evaluated 36 edge cases and ran regression checks on 113 synthetic records against both states’ rules.",
       ],
     },
     {
       company: "IDXExchange",
       category: "work",
-      title: "Data Analyst & Data Science Intern",
+      title: "Data Science Intern",
       location: "Remote",
-      dateRange: "Mar 2026 - Sep 2026",
+      dateRange: "Jun 2026 - Sep 2026",
+      summary:
+        "I built a home price predictor using California MLS data and looked at how its estimates varied by location and price range.",
       bullets: [
-        "Built a Python pipeline that cleaned 625K California real estate records into 314K home sales",
-        "Compared 5 regression models; tuned XGBoost reached R² of 0.85 and 12% median absolute percentage error",
-        "Built a Streamlit prototype for home price prediction",
+        "Built a Python pipeline that filtered about 640K MLS records to 311K single-family home sales. Used training data to set outlier cutoffs and fill missing values before testing on a later month.",
+        "Compared five regression models on a held-out month of nearly 12K sales. Tuned XGBoost achieved an R² of 0.817 and an 11.9% median absolute percentage error.",
+        "Tested how city and county features affected model performance and analyzed prediction errors across five price tiers.",
+        "Built and deployed a Streamlit app that estimates sale prices from seven inputs, including location and property details.",
+      ],
+      links: [
+        { label: "Streamlit app", url: "https://idx-home-price-predictor.streamlit.app" },
+      ],
+    },
+    {
+      company: "IDXExchange",
+      category: "work",
+      title: "Data Analyst Intern",
+      location: "Remote",
+      dateRange: "Mar 2026 - Jun 2026",
+      summary:
+        "I worked with monthly California MLS data to track housing market trends and compare sales activity across agents, offices, and ZIP codes.",
+      bullets: [
+        "Automated the process of combining monthly MLS files into a dataset of 386K residential sales and checked for missing files and inconsistent records.",
+        "Flagged invalid prices, dates, and coordinates, and used the interquartile range to identify outliers for review.",
+        "Calculated metrics such as price per square foot and sale-to-list price ratio, and added monthly mortgage rates from FRED.",
+        "Built two interactive Tableau dashboards covering market trends, including median sale price and days on market, and comparisons by agent, office, and ZIP code.",
+      ],
+      links: [
+        { label: "Market dashboard", url: "https://public.tableau.com/app/profile/amelia.oo/viz/IDXMarketAnalysisDashboard/Story1" },
+        { label: "Competitive dashboard", url: "https://public.tableau.com/app/profile/amelia.oo/viz/IDX_Competitive_Analysis/TopListingAgents" },
       ],
     },
     {
