@@ -218,12 +218,12 @@ I’m actively looking for Summer 2027 internships in data analytics, data scien
       location: "Remote",
       dateRange: "Mar 2026 - Jun 2026",
       summary:
-        "Used monthly California MLS data to track housing market trends and compare activity across agents, offices, and ZIP codes.",
+        "Analyzed California MLS listing and transaction data using Python and Tableau to understand housing market trends and competitive activity.",
       bullets: [
-        "Automated the aggregation of monthly MLS files into a dataset of 386K residential sales, with checks for missing files and inconsistent records.",
-        "Flagged invalid prices, dates, and coordinates and used the interquartile range to identify outliers for review.",
-        "Calculated price per square foot and the sale-to-original-list price ratio and added monthly mortgage rates from FRED.",
-        "Built two interactive Tableau dashboards to track median sale price and days on market and compare activity across agents, offices, and ZIP codes.",
+        "Automated the aggregation of monthly MLS files from January 2024 onward, consolidating 386K residential sales records while checking for missing files and tracking record counts.",
+        "Performed exploratory data analysis and data validation, examining missing values, inconsistent prices, invalid dates and coordinates, and identifying outliers using the interquartile range (IQR).",
+        "Engineered housing market metrics, including price per square foot, sale-to-original-list price ratio, and listing-to-contract duration, and enriched the dataset with monthly mortgage rates from FRED.",
+        "Developed interactive Tableau dashboards for market and competitive analysis, visualizing median sale prices, days on market, listing and sales volumes, and agent and office performance across geographic areas.",
       ],
       links: [
         { label: "Market dashboard", url: "https://public.tableau.com/app/profile/amelia.oo/viz/IDXMarketAnalysisDashboard/Story1" },
@@ -236,10 +236,11 @@ I’m actively looking for Summer 2027 internships in data analytics, data scien
       title: "Fiscal Support Assistant",
       location: "San Diego, CA",
       dateRange: "Aug 2026 - Present",
+      summary:
+        "Support the department's fiscal operations, primarily focusing on salary funding and financial recordkeeping.",
       bullets: [
-        "Support the department's fiscal operations with UCPath funding entries and salary cost transfers",
-        "Process purchase orders in Oracle Financials Cloud",
-        "Track and reconcile finances in Excel",
+        "Process 20+ UCPath funding entries and salary cost transfers each month, totaling approximately $100K, in collaboration with fund managers.",
+        "Track salary funding in Excel and reconcile entries against financial system records to identify discrepancies.",
       ],
     },
     {
@@ -249,9 +250,9 @@ I’m actively looking for Summer 2027 internships in data analytics, data scien
       location: "Cupertino, CA",
       dateRange: "Oct 2024 - Jun 2025",
       bullets: [
-        "Processed cash, credit and check payments with zero discrepancies",
-        "Kept accurate financial records",
-        "Answered students' payment questions at the cashier's window",
+        "Processed cash, credit card, and check payments with zero discrepancies.",
+        "Maintained accurate records of daily financial transactions.",
+        "Assisted students with payment-related questions and inquiries at the cashier's window.",
       ],
     },
     {
@@ -260,9 +261,13 @@ I’m actively looking for Summer 2027 internships in data analytics, data scien
       title: "Undergraduate Peer Learning Assistant",
       location: "San Diego, CA",
       dateRange: "Mar 2026 - Jun 2026",
+      summary:
+        "Supported COGS 9: Introduction to Data Science through discussion sections and course support.",
       bullets: [
-        "Support Introduction to Data Science by preparing discussion materials and helping grade exams",
-        "Work with the TA to run a discussion section of 30+ students",
+        "Prepared discussion materials, slides, and interactive polls to reinforce course concepts.",
+        "Collaborated with the TA to facilitate weekly discussion sections of 30+ students.",
+        "Held office hours to answer students' questions and clarify course concepts.",
+        "Assisted with exam administration and grading logistics.",
       ],
     },
     {
@@ -309,6 +314,20 @@ I’m actively looking for Summer 2027 internships in data analytics, data scien
         "Created social media posts and video content for the club",
         "Helped organize meetings and cultural events promoting language learning",
       ],
+    },
+  ],
+  honors: [
+    {
+      title: "IGCSE Honors",
+      issuer: "Zenith International Education Center",
+      date: "Dec 2022",
+      description:
+        "Achieved A* grades in all eight IGCSE subjects: Further Pure Mathematics, Mathematics, Physics, Chemistry, Information and Communication Technology, Business, Chinese, and English as a Second Language.",
+    },
+    {
+      title: "Certificate of Excellence",
+      issuer: "Pearson Education Asia",
+      date: "Jun 2022",
     },
   ],
   education: [
